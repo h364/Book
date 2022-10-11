@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="http://localhost:8080/book/">
+    <link rel="stylesheet" href="static/css/regist.css">
+    <script src="static/js/jQuery.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="regist">
+        <div class="registPage">
+            <div class="leftPage">
+                <div class="welcome">
+                    welcome
+                    <span>xx书城管理系统</span>
+                </div>
+            </div>
+            <div class="rightPage">
+                <a href="./login.html" class="backToLogin">
+                    <img src="../cart/back.png" alt="back">
+                </a>
+                <form onsubmit="return false">
+                    <input type="text" name="regist_name" placeholder="请输入用户名" id="username">
+                    <input type="text" name="regist_password" placeholder="请输入密码" id="password">
+                    <input type="text" name="regist_confirm" placeholder="确认密码" id="conPassword">
+                    <input type="text" name="regist_email" placeholder="请输入邮箱" id="email">
+                    <input type="text" name="regist_identifyCode" placeholder="请输入验证码" class="identifyCode">
+                    <button id="registBtn" onclick="regist()">注册</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function regist() {
+            var username = $('#username').val()
+            var password = $('#password').val()
+            var conPassword = $('#conPassword').val()
+            var email = $('#email').val()
+
+            $.ajax({
+                url: 'regist',
+                type: 'post',
+                data: {
+                    'regist_name': username,
+                    'regist_password': password,
+                    'regist_email': email
+                },
+                success: function(value) {
+                    console.log(value);
+                }
+            })
+        }
+    </script>
+</body>
+</html>

@@ -11,12 +11,12 @@ import java.util.Properties;
 import java.sql.Statement;
 
 public class JDBCUtils_Druid {
-    private static DataSource dataSource = null;
+    private static DataSource dataSource;
 
     static {
         Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream("src/druid.properties"));
+            properties.load(new FileInputStream("F:/javaweb/book/src/druid.properties"));
             dataSource = DruidDataSourceFactory.createDataSource(properties);
         } catch (Exception e) {
             e.printStackTrace();

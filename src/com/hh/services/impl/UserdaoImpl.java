@@ -17,9 +17,16 @@ public class UserdaoImpl extends BasicDAO<User> implements UserDao {
         return querySingle(sql, User.class, "admin", "123456");
     }
 
+
     @Override
     public int saveUser(User user) {
         String sql = "insert into `user`(`username`, `password`, `email`) values(?, ?, ?)";
         return update(sql, user.getUsername(), user.getPassword(), user.getEmail());
+    }
+
+    @Override
+    public User queryUserByEmail(String email) {
+        String sql = "select * from `user` where email = ?";
+        return querySingle(sql, User.class, email);
     }
 }

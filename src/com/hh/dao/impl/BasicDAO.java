@@ -39,9 +39,9 @@ public class BasicDAO<T> {
     }
 
     public T querySingle(String sql, Class<T> clazz, Object... parameter) {
-        Connection connection = null;
+          Connection connection = JDBCUtils_Druid.connect();
         try {
-            connection = JDBCUtils_Druid.connect();
+            //connection = JDBCUtils_Druid.connect();
             return queryRunner.query(connection, sql, new BeanHandler<T>(clazz), parameter);
         } catch (SQLException throwables) {
             throw new RuntimeException();
@@ -60,5 +60,6 @@ public class BasicDAO<T> {
         } finally {
             JDBCUtils_Druid.close(null, connection, null);
         }
+
     }
 }

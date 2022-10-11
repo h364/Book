@@ -24,4 +24,6 @@ public interface UserDao {
      * @return 返回1表示成功
      */
     public int saveUser(User user);
+
+    public User queryUserByEmail(String email);
 }

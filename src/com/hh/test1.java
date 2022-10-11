@@ -12,7 +12,7 @@ public class test1 {
     public void useDbUtils() throws SQLException {
         Connection connection = JDBCUtils_Druid.connect();
         QueryRunner queryRunner = new QueryRunner();
-        String sql = "update account set balance = 10000 where id = ?";
+        String sql = "update user set balance = 10000 where id = ?";
         int affectRows = queryRunner.update(connection, sql, 1);
         System.out.println(affectRows > 0 ? "执行成功":"执行失败");
         JDBCUtils_Druid.close(null, connection,null);
